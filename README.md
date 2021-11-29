@@ -1,7 +1,11 @@
-<h1>OkayegTeaTime</h1><h2>
-    Commands</h2>If your channel has a custom prefix set, commands will have to start with the prefix.
-<br/>If your channel has no prefix set, commands will have to end with "eg", for example: "pingeg".
-<br/>Text in "[ ]" is a variable parameter<br/><br/>
+# OkayegTeaTime
+
+## Commands
+
+If your channel has a custom prefix set, commands will have to start with the prefix.\
+If your channel has no prefix set, commands will have to end with "eg", for example: "pingeg".\
+Text in "[ ]" is a variable parameter
+
 <table>
     <tr>
         <th>Command</th>
@@ -811,7 +815,10 @@
             </table>
         </td>
     </tr>
-</table><h2>AFK-Commands</h2>
+</table>
+
+## AFK-Commands
+
 <table>
     <tr>
         <th>Command</th>
