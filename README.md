@@ -1,5 +1,7 @@
 # OkayegTeaTime
 
+OkayegTeaTime is a Twitch bot.
+
 ## Commands
 
 See [COMMANDS.md](./COMMANDS.md) for a full list of commands.
