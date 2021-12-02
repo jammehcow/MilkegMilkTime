@@ -1,6 +1,6 @@
 ﻿using OkayegTeaTimeCSharp.Database;
 using OkayegTeaTimeCSharp.JsonData;
-using OkayegTeaTimeCSharp.Twitch.Api;
+using OkayegTeaTimeCSharp.Twitch.API;
 
 namespace OkayegTeaTimeCSharp.Twitch.Bot;
 

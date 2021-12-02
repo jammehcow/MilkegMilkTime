@@ -11,7 +11,7 @@ using OkayegTeaTimeCSharp.Exceptions;
 using OkayegTeaTimeCSharp.HttpRequests;
 using OkayegTeaTimeCSharp.JsonData.JsonClasses.HttpRequests;
 using OkayegTeaTimeCSharp.Spotify;
-using OkayegTeaTimeCSharp.Twitch.Api;
+using OkayegTeaTimeCSharp.Twitch.API;
 using OkayegTeaTimeCSharp.Twitch.Commands.AfkCommandClasses;
 using OkayegTeaTimeCSharp.Twitch.Commands.Enums;
 using OkayegTeaTimeCSharp.Twitch.Messages.Interfaces;

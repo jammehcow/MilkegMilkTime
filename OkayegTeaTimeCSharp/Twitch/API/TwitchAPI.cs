@@ -3,7 +3,7 @@ using TwitchLib.Api.Core.Enums;
 using TwitchLib.Api.Helix.Models.Users.GetUsers;
 using TwitchLibApi = TwitchLib.Api.TwitchAPI;
 
-namespace OkayegTeaTimeCSharp.Twitch.Api;
+namespace OkayegTeaTimeCSharp.Twitch.API;
 
 public static class TwitchApi
 {

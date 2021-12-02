@@ -6,7 +6,7 @@ using HLE.HttpRequests;
 using HLE.Strings;
 using OkayegTeaTimeCSharp.JsonData.JsonClasses.HttpRequests;
 using OkayegTeaTimeCSharp.Logging;
-using OkayegTeaTimeCSharp.Twitch.Api;
+using OkayegTeaTimeCSharp.Twitch.API;
 using OkayegTeaTimeCSharp.Twitch.Models;
 using OkayegTeaTimeCSharp.Twitch.Models.Enums;
 

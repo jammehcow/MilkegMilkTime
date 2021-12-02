@@ -5,7 +5,7 @@ using HLE.Strings;
 using HLE.Time;
 using OkayegTeaTimeCSharp.Database;
 using OkayegTeaTimeCSharp.Logging;
-using OkayegTeaTimeCSharp.Twitch.Api;
+using OkayegTeaTimeCSharp.Twitch.API;
 using OkayegTeaTimeCSharp.Twitch.Bot.EmoteManagementNotifications;
 using OkayegTeaTimeCSharp.Twitch.Commands;
 using OkayegTeaTimeCSharp.Twitch.Messages;

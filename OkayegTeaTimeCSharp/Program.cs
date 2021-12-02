@@ -1,7 +1,7 @@
 ﻿using System.Diagnostics;
 using System.Threading;
 using OkayegTeaTimeCSharp.Logging;
-using OkayegTeaTimeCSharp.Twitch.Api;
+using OkayegTeaTimeCSharp.Twitch.API;
 using OkayegTeaTimeCSharp.Twitch.Bot;
 
 namespace OkayegTeaTimeCSharp;
