@@ -47,14 +47,11 @@ public static class DatabaseController
     public static int AddNuke(Nuke nuke)
     {
         using var database = new OkayegTeaTimeContext();
+
         database.Nukes.Add(nuke);
         database.SaveChanges();
-        return database.Nukes.FirstOrDefault(n =>
-            n.Channel == nuke.Channel
-            && n.ForTime == nuke.ForTime
-            && n.TimeoutTime == nuke.TimeoutTime
-            && n.Username == nuke.Username
-            && n.Word == nuke.Word).Id;
+
+        return nuke.Id;
     }
 
     public static int AddReminder(Reminder reminder)
@@ -74,13 +71,11 @@ public static class DatabaseController
                 throw new TooManyReminderException();
             }
         }
+
         database.Reminders.Add(reminder);
         database.SaveChanges();
-        return database.Reminders.FirstOrDefault(r => r.FromUser == reminder.FromUser
-            && r.ToUser == reminder.ToUser
-            && r.Message == reminder.Message
-            && r.ToTime == reminder.ToTime
-            && r.Time == reminder.Time).Id;
+
+        return reminder.Id;
     }
 
     public static void AddSuggestion(ITwitchChatMessage chatMessage, string suggestion)
