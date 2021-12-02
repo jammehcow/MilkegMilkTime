@@ -57,20 +57,19 @@ public static class DatabaseController
     public static int AddReminder(Reminder reminder)
     {
         using var database = new OkayegTeaTimeContext();
-        if (reminder.ToTime == 0)
-        {
-            if (database.Reminders.AsQueryable().Where(r => r.ToUser == reminder.ToUser && r.ToTime == 0).Count() >= Config.MaxReminders)
-            {
-                throw new TooManyReminderException();
-            }
-        }
-        else
-        {
-            if (database.Reminders.AsQueryable().Where(r => r.ToUser == reminder.ToUser && r.ToTime != 0).Count() >= Config.MaxReminders)
-            {
-                throw new TooManyReminderException();
-            }
-        }
+
+        var userReminderQuery =
+            database.Reminders
+                .AsQueryable()
+                .Where(r => r.ToUser == reminder.ToUser);
+
+        var totalReminders =
+            reminder.ToTime == 0
+                ? userReminderQuery.Count(r => r.ToTime == 0)
+                : userReminderQuery.Count(r => r.ToTime != 0);
+
+        if (totalReminders >= Config.MaxReminders)
+            throw new TooManyReminderException();
 
         database.Reminders.Add(reminder);
         database.SaveChanges();
