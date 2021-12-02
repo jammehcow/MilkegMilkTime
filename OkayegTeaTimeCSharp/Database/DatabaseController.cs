@@ -1,4 +1,4 @@
-﻿using HLE.Collections;
+using HLE.Collections;
 using HLE.Strings;
 using HLE.Time;
 using Microsoft.EntityFrameworkCore;
@@ -82,7 +82,7 @@ public static class DatabaseController
             && r.Time == reminder.Time).Id;
     }
 
-    public static void AddSugestion(ITwitchChatMessage chatMessage, string suggestion)
+    public static void AddSuggestion(ITwitchChatMessage chatMessage, string suggestion)
     {
         using var database = new OkayegTeaTimeContext();
         database.Suggestions.Add(new(chatMessage.Username, suggestion.Encode(), $"#{chatMessage.Channel}"));

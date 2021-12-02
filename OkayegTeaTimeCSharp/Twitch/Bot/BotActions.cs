@@ -748,7 +748,7 @@ public static class BotActions
 
     public static string SendSuggestionNoted(ITwitchChatMessage chatMessage)
     {
-        DatabaseController.AddSugestion(chatMessage, chatMessage.Message[chatMessage.LowerSplit[0].Length..]);
+        DatabaseController.AddSuggestion(chatMessage, chatMessage.Message[chatMessage.LowerSplit[0].Length..]);
         return $"{chatMessage.Username}, your suggestion has been noted";
     }
 
