@@ -29,19 +29,20 @@ public static class DatabaseController
     public static void AddNewToken(string username, string accessToken, string refreshToken)
     {
         using var database = new OkayegTeaTimeContext();
-        if (database.Spotify.Any(s => s.Username == username))
-        {
-            Models.Spotify user = database.Spotify.FirstOrDefault(s => s.Username == username);
-            user.AccessToken = accessToken;
-            user.RefreshToken = refreshToken;
-            user.Time = TimeHelper.Now();
-            database.SaveChanges();
-        }
-        else
+
+        var user = database.Spotify.FirstOrDefault(s => s.Username == username);
+        if (user == null)
         {
             database.Spotify.Add(new Models.Spotify(username, accessToken, refreshToken));
             database.SaveChanges();
+            return;
         }
+
+        user.AccessToken = accessToken;
+        user.RefreshToken = refreshToken;
+        user.Time = TimeHelper.Now();
+
+        database.SaveChanges();
     }
 
     public static int AddNuke(Nuke nuke)
