@@ -21,7 +21,8 @@ public static class DatabaseController
         // Would be better to make this class non-static (treat as a Repository) & pool connections (see the following:
         // https://docs.microsoft.com/en-us/ef/core/performance/advanced-performance-topics#dbcontext-pooling)
         using var database = new OkayegTeaTimeContext();
-        database.Channels.Add(new(channel));
+
+        database.Channels.Add(new Channel(channel));
         database.SaveChanges();
     }
 
@@ -38,7 +39,7 @@ public static class DatabaseController
         }
         else
         {
-            database.Spotify.Add(new(username, accessToken, refreshToken));
+            database.Spotify.Add(new Models.Spotify(username, accessToken, refreshToken));
             database.SaveChanges();
         }
     }
@@ -85,7 +86,7 @@ public static class DatabaseController
     public static void AddSuggestion(ITwitchChatMessage chatMessage, string suggestion)
     {
         using var database = new OkayegTeaTimeContext();
-        database.Suggestions.Add(new(chatMessage.Username, suggestion.Encode(), $"#{chatMessage.Channel}"));
+        database.Suggestions.Add(new Suggestion(chatMessage.Username, suggestion.Encode(), $"#{chatMessage.Channel}"));
         database.SaveChanges();
     }
 
