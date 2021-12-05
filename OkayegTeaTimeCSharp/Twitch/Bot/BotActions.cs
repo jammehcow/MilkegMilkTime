@@ -21,11 +21,12 @@ namespace OkayegTeaTimeCSharp.Twitch.Bot;
 
 public static class BotActions
 {
-    private const int _defaultEmoteCount = 5;
-    private const string _noModOrStreamerMessage = "you aren't a mod or the broadcaster";
-    private const string _channelEmotesError = "the channel doesn't have the specified amount of " +
-        "emotes enabled or an error occurred";
-    private const string _twitchUserDoesntExistMessage = "Twitch user doesn't exist";
+    private const int DefaultEmoteCount = 5;
+
+    private const string NoModOrStreamerMessage = "you aren't a mod or the broadcaster";
+    private const string ChannelEmotesError =
+        "the channel doesn't have the specified amount of emotes enabled or an error occurred";
+    private const string TwitchUserDoesntExistMessage = "Twitch user doesn't exist";
 
     public static void AddAfkCooldown(string username)
     {
@@ -77,7 +78,7 @@ public static class BotActions
         return TwitchBot.Cooldowns.Any(c => c.Username == username && c.Type == type && c.Time > TimeHelper.Now());
     }
 
-    public static string SendSevenTvEmotes(ITwitchChatMessage chatMessage, string channel = null, int count = _defaultEmoteCount)
+    public static string SendSevenTvEmotes(ITwitchChatMessage chatMessage, string channel = null, int count = DefaultEmoteCount)
     {
         IEnumerable<SevenTvEmote> emotes = HttpRequest.GetSevenTvEmotes(channel ?? chatMessage.Channel.Name, count);
         if (emotes is not null && emotes.Any())
@@ -87,7 +88,7 @@ public static class BotActions
         }
         else
         {
-            return $"{chatMessage.Username}, {_channelEmotesError}";
+            return $"{chatMessage.Username}, {ChannelEmotesError}";
         }
     }
 
@@ -122,7 +123,7 @@ public static class BotActions
         }
     }
 
-    public static string SendBttvEmotes(ITwitchChatMessage chatMessage, string channel = null, int count = _defaultEmoteCount)
+    public static string SendBttvEmotes(ITwitchChatMessage chatMessage, string channel = null, int count = DefaultEmoteCount)
     {
         IEnumerable<BttvSharedEmote> emotes = HttpRequest.GetBttvEmotes(channel ?? chatMessage.Channel.Name, count);
         if (emotes is not null && emotes.Any())
@@ -132,7 +133,7 @@ public static class BotActions
         }
         else
         {
-            return $"{chatMessage.Username}, {_channelEmotesError}";
+            return $"{chatMessage.Username}, {ChannelEmotesError}";
         }
     }
 
@@ -254,7 +255,7 @@ public static class BotActions
         }
         else
         {
-            return $"{chatMessage.Username}, {_noModOrStreamerMessage}";
+            return $"{chatMessage.Username}, {NoModOrStreamerMessage}";
         }
     }
 
@@ -270,7 +271,7 @@ public static class BotActions
         }
     }
 
-    public static string SendFfzEmotes(ITwitchChatMessage chatMessage, string channel = null, int count = _defaultEmoteCount)
+    public static string SendFfzEmotes(ITwitchChatMessage chatMessage, string channel = null, int count = DefaultEmoteCount)
     {
         IEnumerable<FfzEmote> emotes = HttpRequest.GetFfzEmotes(channel ?? chatMessage.Channel.Name, count);
         if (emotes is not null && emotes.Any())
@@ -280,7 +281,7 @@ public static class BotActions
         }
         else
         {
-            return $"{chatMessage.Username}, {_channelEmotesError}";
+            return $"{chatMessage.Username}, {ChannelEmotesError}";
         }
     }
 
@@ -458,7 +459,7 @@ public static class BotActions
         }
         else
         {
-            return $"{chatMessage.Username}, {_noModOrStreamerMessage}";
+            return $"{chatMessage.Username}, {NoModOrStreamerMessage}";
         }
     }
 
@@ -619,7 +620,7 @@ public static class BotActions
         }
         else
         {
-            return $"{chatMessage.Username}, {_noModOrStreamerMessage}";
+            return $"{chatMessage.Username}, {NoModOrStreamerMessage}";
         }
     }
 
@@ -633,7 +634,7 @@ public static class BotActions
         }
         else
         {
-            return $"{chatMessage.Username}, {_noModOrStreamerMessage}";
+            return $"{chatMessage.Username}, {NoModOrStreamerMessage}";
         }
     }
 
@@ -742,7 +743,7 @@ public static class BotActions
         }
         else
         {
-            return $"{chatMessage.Username}, {_noModOrStreamerMessage}";
+            return $"{chatMessage.Username}, {NoModOrStreamerMessage}";
         }
     }
 
@@ -780,7 +781,7 @@ public static class BotActions
         }
         else
         {
-            return $"{chatMessage.Username}, {_noModOrStreamerMessage}";
+            return $"{chatMessage.Username}, {NoModOrStreamerMessage}";
         }
     }
 
@@ -810,7 +811,7 @@ public static class BotActions
         }
         else
         {
-            return $"{chatMessage.Username}, {_noModOrStreamerMessage}";
+            return $"{chatMessage.Username}, {NoModOrStreamerMessage}";
         }
     }
 
@@ -841,7 +842,7 @@ public static class BotActions
         }
         else
         {
-            return $"{chatMessage.Username}, {_noModOrStreamerMessage}";
+            return $"{chatMessage.Username}, {NoModOrStreamerMessage}";
         }
     }
 
@@ -850,7 +851,7 @@ public static class BotActions
         try
         {
             string username = chatMessage.Split.Length > 1 ? chatMessage.LowerSplit[1] : chatMessage.Username;
-            return $"{chatMessage.Username}, {TwitchApi.GetUserId(username) ?? _twitchUserDoesntExistMessage}";
+            return $"{chatMessage.Username}, {TwitchApi.GetUserId(username) ?? TwitchUserDoesntExistMessage}";
         }
         catch (UserNotFoundException ex)
         {
